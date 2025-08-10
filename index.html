@@ -3,124 +3,280 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>One Click Productivity</title>
+  <title>One Click Productivity – Block Distractions, Get Things Done</title>
+  <meta name="description" content="One Click Productivity helps you block distracting apps until you complete your todos. Stay focused, manage tasks, and boost your productivity with ease." />
+  <meta name="keywords" content="productivity, app blocker, todo list, focus, task management, distraction blocker" />
+  <meta name="author" content="XG Studios" />
   <link rel="icon" type="image/svg+xml" href="assets/mouse-pointer-click (1).svg" />
   <style>
+    :root {
+      --primary: #1770E4;
+      --secondary: #f5f8fa;
+      --accent: #1e293b;
+      --radius: 20px;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--secondary);
+      color: var(--accent);
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
     }
-
-    .header {
-      max-width: 900px;
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(23,112,228,0.06);
+      padding: 1.5rem 0;
+    }
+    .container {
+      max-width: 950px;
       margin: 0 auto;
-      width: calc(100% - 4rem);
-      padding: 2rem 0;
+      width: 95%;
+    }
+    .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
-    .header-left {
+    .logo-group {
       display: flex;
       align-items: center;
+      gap: 1rem;
+    }
+    .logo {
+      width: 48px;
+      height: 48px;
+    }
+    .brand-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -1px;
+    }
+    .xg-logo {
+      height: 22px;
+      width: auto;
+      opacity: 0.8;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 3.5rem 0 2.5rem 0;
+      background: linear-gradient(90deg, #eaf3fc 0%, #f5f8fa 100%);
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+    .hero-title {
+      font-size: 2.7rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    .hero-desc {
+      font-size: 1.25rem;
+      color: #334155;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+    .cta-btn {
+      background: var(--primary);
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 600;
+      padding: 0.9rem 2.2rem;
+      border: none;
+      border-radius: 999px;
+      box-shadow: 0 2px 12px rgba(23,112,228,0.10);
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-bottom: 2.5rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .cta-btn:hover, .cta-btn:focus {
+      background: #125bb3;
+    }
+    .hero-img {
+      width: 100%;
+      max-width: 480px;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 24px rgba(23,112,228,0.10);
+      margin-top: 1.5rem;
+    }
+    .features-section {
+      padding: 2.5rem 0 2rem 0;
+    }
+    .features-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
     }
-
-    .logo {
-      width: 45px;
-      height: 45px;
-    }
-
-    .header-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #1770E4;
-      margin: 0;
-    }
-
-    .xg-studios-logo {
-      height: 18px;
-      width: auto;
-    }
-
-    .content-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
-      width: calc(100% - 4rem);
-      padding: 0;
-    }
-
-    .main-image {
-      width: 100%;
-      margin: 1.5rem auto 3rem auto;
-      display: block;
-      border-radius: 30px;
-    }
-
-    .image-grid {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      justify-content: space-between;
-      gap: 4rem;
-      padding: 0 0 4rem 0;
-    }
-
-    .image-grid img {
-      width: 100%;
-      border-radius: 30px;
-    }
-
-    footer {
-      background: #333;
-      color: white;
+    .feature-card {
+      background: #fff;
+      border-radius: var(--radius);
       padding: 1.5rem;
-      margin-top: auto;
-      text-align: center;
+      box-shadow: 0 4px 12px rgba(23,112,228,0.08);
+      transition: transform 0.2s;
     }
-
+    .feature-card:hover {
+      transform: translateY(-4px);
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+    }
+    .feature-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .feature-desc {
+      font-size: 0.95rem;
+      color: #334155;
+      line-height: 1.4;
+    }
+    .screenshots-section {
+      padding: 2.5rem 0 2rem 0;
+    }
+    .screenshots-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .screenshot-img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(23,112,228,0.08);
+    }
+    .how-section {
+      padding: 2.5rem 0 2rem 0;
+    }
+    .how-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .how-list {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.08rem;
+      color: #334155;
+      list-style: decimal inside;
+      padding-left: 0;
+    }
+    .how-list li {
+      margin-bottom: 0.7rem;
+      line-height: 1.6;
+    }
+    footer {
+      background: #222;
+      color: #eee;
+      padding: 2rem 0 1.2rem 0;
+      text-align: center;
+      margin-top: auto;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
     footer a {
-      color: #ddd;
+      color: #bcdcff;
       text-decoration: none;
       font-weight: 600;
-      margin: 0 1rem;
+      margin: 0 1.2rem;
+      transition: color 0.2s;
     }
-
-    footer a:hover {
+    footer a:hover, footer a:focus {
       color: #fff;
       text-decoration: underline;
+    }
+    @media (max-width: 700px) {
+      .hero-title { font-size: 2rem; }
+      .features-title, .screenshots-title { font-size: 1.3rem; }
+      .container { width: 98%; }
+      .hero-img { max-width: 95vw; }
+      .screenshots-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 500px) {
+      .brand-title { font-size: 1.1rem; }
+      .logo { width: 36px; height: 36px; }
+      .xg-logo { height: 16px; }
+      .feature-card { padding: 1.2rem 0.7rem; }
+      .features-section, .screenshots-section, .how-section { padding: 1.2rem 0; }
+      .hero { padding: 2rem 0 1.2rem 0; }
+      footer { padding: 1.2rem 0 0.7rem 0; }
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="header-left">
-      <img src="assets/mouse-pointer-click (1).svg" alt="Logo" class="logo" />
-      <div class="header-title">One Click Productivity</div>
+  <header>
+    <div class="container nav">
+      <div class="logo-group">
+        <img src="assets/mouse-pointer-click (1).svg" alt="One Click Productivity Logo" class="logo" />
+        <span class="brand-title">One Click Productivity</span>
+      </div>
+      <img src="assets/xg-studios-high-resolution-logo-transparent.png" alt="XG Studios" class="xg-logo" />
     </div>
-    <img src="assets/xg-studios-high-resolution-logo-transparent.png" alt="XG Studios" class="xg-studios-logo" />
-  </div>
-  
-  <div class="content-wrapper">
-    <img src="assets/Webpage-main.png" alt="Main Image" class="main-image" />
-    <div class="image-grid">
-      <img src="assets/1.png" alt="Image 1" />
-      <img src="assets/2.png" alt="Image 2" />
-      <img src="assets/3.png" alt="Image 3" />
-      <img src="assets/4.png" alt="Image 4" />
-      <img src="assets/5.png" alt="Image 5" />
-      <img src="assets/6.png" alt="Image 6" />
-    </div>
-  </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <h1 class="hero-title">Block Distractions. Complete Your Todos.</h1>
+      <p class="hero-desc">
+        One Click Productivity helps you be productive by blocking distracting apps until you finish your todos.<br>
+        Select which apps to block, manage your tasks, and level up your productivity – all in one click.
+      </p>
+      <a href="#download" class="cta-btn">Get Started</a>
+      <img src="assets/1.png" alt="One Click Productivity App Screenshot" class="hero-img" loading="lazy" />
+    </section>
+
+    <section class="how-section" id="how">
+      <h2 class="how-title">How It Works</h2>
+      <ol class="how-list">
+        <li>Select the apps you want to be blocked.</li>
+        <li>Add your todos.</li>
+        <li>Blocked apps stay inaccessible until you complete your todos.</li>
+        <li>Finish your tasks and enjoy those apps as a reward</li>
+      </ol>
+    </section>
+
+    <section id="download" style="text-align:center; padding:2.5rem 0 1.5rem 0;">
+      <h2 style="font-size:1.5rem; color:var(--primary); font-weight:700; margin-bottom:1rem;">Ready to Get Started?</h2>
+      <a href="#" class="cta-btn" style="font-size:1.2rem;">Early Access</a>
+      <div style="color:#64748b; font-size:0.98rem; margin-top:0.7rem;">Available for Android soon.</div>
+    </section>
+  </main>
 
   <footer>
-    <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms of Use</a>
-    <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+    <div>
+      <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms of Use</a>
+      <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+    </div>
+    <div style="margin-top:1rem; font-size:0.98rem; color:#bcdcff;">
+      &copy; 2025 One Click Productivity &middot; Built by XG Studios
+    </div>
   </footer>
 </body>
 </html>
+
